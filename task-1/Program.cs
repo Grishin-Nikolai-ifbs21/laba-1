@@ -1,31 +1,31 @@
-﻿Console.WriteLine("Введите размер прямоугольника");
-
-double checkSide()
+byte? checkNubmer()
 {
-    Console.Write("Введите сторону прямоугольника: ");
+    Console.Write("Введите число: ");
 
-    double tmp;
-    if (!double.TryParse(Console.ReadLine(), out tmp))
+    byte tmp;
+    if (!byte.TryParse(Console.ReadLine(), out tmp))
     {
-        Console.Write("\nОшибка! Было введено не число!");
-        Console.ReadLine();
-        Environment.Exit(0);
-    }
-
-    if (tmp < 0)
-    {
-        Console.Write("\nОшибка! Сторона не может быть меньше нуля!");
-        Console.ReadLine();
-        Environment.Exit(0);
+        return null;
     }
 
     return tmp;
 }
 
-double a = checkSide();
-double b = checkSide();
+byte? firstNumber = checkNubmer();
+byte? secondNumber = checkNubmer();
 
-Console.Write($"\nПлощаль прямоугольника: {a * b}");
+Console.Write('\n');
+
+if (firstNumber == null || secondNumber == null)
+{
+    Console.Write("\nОшибка! Введите число в диапазоне от 0 до 255!");
+}
+else
+{
+    Console.Write($"AND: {firstNumber & secondNumber}\n");
+    Console.Write($"OR: {firstNumber | secondNumber}\n");
+    Console.Write($"XOR: {firstNumber ^ secondNumber}\n");
+}
 
 
 Console.ReadLine();
